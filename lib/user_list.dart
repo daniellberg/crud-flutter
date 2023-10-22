@@ -19,6 +19,7 @@ class UserList extends StatelessWidget {
         title: Text('Users'),
         leading: BackButton(
           onPressed: (){
+            provider.indexUser = null;
             Navigator.popAndPushNamed(context, '/create');
           },
         ), 
@@ -27,6 +28,7 @@ class UserList extends StatelessWidget {
         itemCount: usersLength,
         itemBuilder: (BuildContext contextBuilder, indexBuilder) =>
           Container(
+            // ignore: sort_child_properties_last
             child: ListTile(
               title: Text(users[indexBuilder].name),
               trailing: Row(
@@ -34,6 +36,8 @@ class UserList extends StatelessWidget {
                 children: [
                   IconButton(
                   onPressed: (){
+                    provider.userSelected = users[indexBuilder];
+                    provider.indexUser = indexBuilder;
                     Navigator.popAndPushNamed(context, '/create');
                   },
                    icon: Icon(Icons.edit)

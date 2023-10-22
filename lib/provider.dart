@@ -5,6 +5,8 @@ class Provider extends InheritedWidget {
 
   final Widget child;
   List<User> users = [];
+  User? userSelected;
+  int? indexUser;
 
   Provider(
     {

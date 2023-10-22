@@ -12,15 +12,31 @@ class UserForm extends StatefulWidget {
 
 class _UserFormState extends State<UserForm> {
 
+String title = 'Create User';
+
 TextEditingController controllerName = TextEditingController();
 TextEditingController controllerEmail = TextEditingController();
 TextEditingController controllerPass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+      Provider provider = Provider.of(context) as Provider;
+
+      int? index;
+
+      if(provider.indexUser != null){
+        index = provider.indexUser;
+        controllerName.text = provider.userSelected!.name;
+        controllerEmail.text = provider.userSelected!.email;
+        controllerPass.text = provider.userSelected!.password;
+
+        setState(() {
+          this.title = 'Edit User';
+        });
+
+      } 
 
     void saveUser(){
-      Provider provider = Provider.of(context) as Provider;
     
     //instancia da classe user um usuario novo
       User user = User(
@@ -29,18 +45,21 @@ TextEditingController controllerPass = TextEditingController();
         password: controllerPass.text
       );    
       
-      int usersLength = provider.users.length;
+      if(index!=null){
+        provider.users[index] = user;
+      } else{
+        int usersLength = provider.users.length;
 
-      //salva na lista users
-      provider.users.insert(usersLength, user);
+        //salva na lista users
+        provider.users.insert(usersLength, user);
 
-      Navigator.popAndPushNamed(context,'/read');
-
+      }
+        Navigator.popAndPushNamed(context,'/read');
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create User'),
+        title: Text(this.title),
         actions: [
           Container(
             child: TextButton(
