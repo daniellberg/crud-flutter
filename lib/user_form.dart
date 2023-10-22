@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/field_form.dart';
+import 'package:flutter_application_1/provider.dart';
+import 'package:flutter_application_1/user.dart';
 
 class UserForm extends StatefulWidget {
   const UserForm({super.key});
@@ -16,38 +18,58 @@ TextEditingController controllerPass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          FieldForm(
-            label: 'Name', 
-            isPassword: false, 
-            controller: controllerName
-          ),
-          FieldForm(
-            label: 'Email', 
-            isPassword: false, 
-            controller: controllerEmail
-          ),
-          FieldForm(
-            label: 'Password', 
-            isPassword: true, 
-            controller: controllerPass
-          ),
-          Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: SizedBox(
-              width: 200.0,
-              child: TextButton(onPressed:() {},
-               child: Text('Salvar'),
-               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
-                foregroundColor: MaterialStateProperty.all(Colors.white)
-                ),
-               ),
+
+    void saveUser(){
+      Provider provider = Provider.of(context) as Provider;
+    
+    //instancia da classe user um usuario novo
+      User user = User(
+        name: controllerName.text,
+        email: controllerEmail.text,
+        password: controllerPass.text
+      );    
+      
+      //salva na lista users
+      provider.users.insert(0, user);
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Create User'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            FieldForm(
+              label: 'Name', 
+              isPassword: false, 
+              controller: controllerName
             ),
-          ),
-        ], //Children
+            FieldForm(
+              label: 'Email', 
+              isPassword: false, 
+              controller: controllerEmail
+            ),
+            FieldForm(
+              label: 'Password', 
+              isPassword: true, 
+              controller: controllerPass
+            ),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: SizedBox(
+                width: 200.0,
+                child: TextButton(onPressed: saveUser,
+                 child: Text('Salvar'),
+                 style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
+                  foregroundColor: MaterialStateProperty.all(Colors.white)
+                  ),
+                 ),
+              ),
+            ),
+          ], //Children
+        ),
       ),
     ); //faz a centralizacao do q ta dentro dele
   }

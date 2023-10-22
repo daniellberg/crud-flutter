@@ -17,13 +17,10 @@ class MyApp extends StatelessWidget {
     return Provider(
       child: MaterialApp(
         title: 'Crud App', //nome navegador
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Aqui é a appbar'),
-          ),
-          body: UserForm(),
-        ),
-        routes: {},
+        home: UserForm(),
+        routes: {
+          '/create':(_) => UserForm()
+        },
       ),
     );
   }
