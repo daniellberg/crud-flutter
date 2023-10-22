@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Crud using Flutter
+=======
+# flutter_application_1
+>>>>>>> 53d29799b21fac104fe2ece0cb6c7b297fa8c7a9
 
 A new Flutter project.
 
