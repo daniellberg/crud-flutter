@@ -29,8 +29,13 @@ TextEditingController controllerPass = TextEditingController();
         password: controllerPass.text
       );    
       
+      int usersLength = provider.users.length;
+
       //salva na lista users
-      provider.users.insert(0, user);
+      provider.users.insert(usersLength, user);
+
+      Navigator.popAndPushNamed(context,'/read');
+
     }
 
     return Scaffold(
