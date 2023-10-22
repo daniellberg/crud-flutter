@@ -41,6 +41,21 @@ TextEditingController controllerPass = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text('Create User'),
+        actions: [
+          Container(
+            child: TextButton(
+              child: Text('View list'),
+              onPressed: (){
+                Navigator.popAndPushNamed(context, '/read');
+              },
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+            ),
+            margin: EdgeInsets.all(8),
+          )
+        ],
       ),
       body: Center(
         child: Column(

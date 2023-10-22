@@ -29,6 +29,17 @@ class UserList extends StatelessWidget {
           Container(
             child: ListTile(
               title: Text(users[indexBuilder].name),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                  onPressed: (){
+                    Navigator.popAndPushNamed(context, '/create');
+                  },
+                   icon: Icon(Icons.edit)
+                  )
+                ],
+              ),
             ),
             decoration: BoxDecoration(
               border: Border(bottom: BorderSide(
