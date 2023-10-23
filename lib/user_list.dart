@@ -17,6 +17,7 @@ class UserList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Users'),
+        centerTitle: true,
         leading: BackButton(
           onPressed: (){
             provider.indexUser = null;
@@ -31,9 +32,11 @@ class UserList extends StatelessWidget {
             // ignore: sort_child_properties_last
             child: ListTile(
               title: Text(users[indexBuilder].name),
+              subtitle: Text(users[indexBuilder].email),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  //edit button
                   IconButton(
                   onPressed: (){
                     provider.userSelected = users[indexBuilder];
@@ -41,6 +44,15 @@ class UserList extends StatelessWidget {
                     Navigator.popAndPushNamed(context, '/create');
                   },
                    icon: Icon(Icons.edit)
+                  ),
+                  //view user button
+                  IconButton(
+                  onPressed: (){
+                    provider.userSelected = users[indexBuilder];
+                    provider.indexUser = indexBuilder;
+                    Navigator.popAndPushNamed(context, '/view');
+                  },
+                   icon: Icon(Icons.remove_red_eye_outlined)
                   )
                 ],
               ),

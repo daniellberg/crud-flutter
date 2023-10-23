@@ -60,6 +60,7 @@ TextEditingController controllerPass = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text(this.title),
+        centerTitle: true,
         actions: [
           Container(
             child: TextButton(
