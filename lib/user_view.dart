@@ -50,6 +50,7 @@ class UserView extends StatelessWidget {
                   isPassword: false,
                   controller: controllerName,
                   isForm: false,
+                  isEmail: false,              
                 ),
               ),
               Padding(
@@ -59,6 +60,7 @@ class UserView extends StatelessWidget {
                   isPassword: false,
                   controller: controllerEmail,
                   isForm: false,
+                  isEmail: false,
                 ),
               ),
               Padding(
@@ -68,6 +70,7 @@ class UserView extends StatelessWidget {
                   isPassword: true,
                   controller: controllerPass,
                   isForm: false,
+                  isEmail: false,
                 ),
               ), 
               SizedBox(height: 20), //espaço entre os campos e os botões

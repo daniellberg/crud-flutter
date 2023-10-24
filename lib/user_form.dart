@@ -34,10 +34,19 @@ TextEditingController controllerPass = TextEditingController();
         setState(() {
           this.title = 'Edit User';
         });
-
       } 
 
+    GlobalKey<FormState> _key = GlobalKey();
+
     void saveUser(){
+
+      final isValid = _key.currentState?.validate();
+
+      if(isValid==false){
+        return;
+      }else{
+        _key.currentState?.save();
+      }
     
     //instancia da classe user um usuario novo
       User user = User(
@@ -80,46 +89,52 @@ TextEditingController controllerPass = TextEditingController();
       ),
       body: ContainerAll(
         child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FieldForm(
-                  label: 'Name', 
-                  isPassword: false, 
-                  controller: controllerName
+          child: Form(
+            key: _key,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FieldForm(
+                    label: 'Name', 
+                    isPassword: false, 
+                    controller: controllerName,
+                    isEmail: false,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FieldForm(
-                  label: 'Email', 
-                  isPassword: false, 
-                  controller: controllerEmail
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FieldForm(
+                    label: 'Email', 
+                    isPassword: false, 
+                    controller: controllerEmail,
+                    isEmail: true,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FieldForm(
-                  label: 'Password', 
-                  isPassword: true, 
-                  controller: controllerPass
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FieldForm(
+                    label: 'Password', 
+                    isPassword: true, 
+                    controller: controllerPass,
+                    isEmail: false,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: SizedBox(
-                  width: 200.0,
-                  child: TextButton(onPressed: saveUser,
-                   child: Text('Salvar'),
-                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
-                    foregroundColor: MaterialStateProperty.all(Colors.white)
-                    ),
-                   ),
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: SizedBox(
+                    width: 200.0,
+                    child: TextButton(onPressed: saveUser,
+                     child: Text('Salvar'),
+                     style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)
+                      ),
+                     ),
+                  ),
                 ),
-              ),
-            ], //Children
+              ], //Children
+            ),
           ),
         ),
       ),
