@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/container_all.dart';
 import 'package:flutter_application_1/field_form.dart';
 import 'package:flutter_application_1/provider.dart';
 
@@ -38,77 +39,88 @@ class UserView extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            FieldForm(
-              label: 'Name',
-              isPassword: false,
-              controller: controllerName,
-              isForm: false,
-            ),
-            FieldForm(
-              label: 'Email',
-              isPassword: false,
-              controller: controllerEmail,
-              isForm: false,
-            ),
-            FieldForm(
-              label: 'Password',
-              isPassword: true,
-              controller: controllerPass,
-              isForm: false,
-            ), 
-            SizedBox(height: 20), // Adicionei um espaço entre os campos e os botões
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(40),
+      body: ContainerAll(
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FieldForm(
+                  label: 'Name',
+                  isPassword: false,
+                  controller: controllerName,
+                  isForm: false,
+                ),
               ),
-              width: MediaQuery.of(context).size.width * 0.9,
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround, // Centraliza os botões horizontalmente
-                    children: [
-                      // View users button
-                      SizedBox(
-                        width: 150.0,
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.popAndPushNamed(context, '/read');
-                          },
-                          child: Text('View all users'),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
-                            foregroundColor: MaterialStateProperty.all(Colors.white),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FieldForm(
+                  label: 'Email',
+                  isPassword: false,
+                  controller: controllerEmail,
+                  isForm: false,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FieldForm(
+                  label: 'Password',
+                  isPassword: true,
+                  controller: controllerPass,
+                  isForm: false,
+                ),
+              ), 
+              SizedBox(height: 20), //espaço entre os campos e os botões
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                width: MediaQuery.of(context).size.width * 0.9,
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround, // Centraliza os botões horizontalmente
+                      children: [
+                        // View users button
+                        SizedBox(
+                          width: 150.0,
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.popAndPushNamed(context, '/read');
+                            },
+                            child: Text('View all users'),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
+                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                            ),
                           ),
                         ),
-                      ),
-
-                      // Create new user button
-                      SizedBox(
-                        width: 150.0,
-                        child: TextButton(
-                          onPressed: () {
-                            provider.indexUser = null;
-                            provider.users.removeAt(index!);
-                            Navigator.popAndPushNamed(context, '/read');
-                          },
-                          child: Text('Delete'),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
-                            foregroundColor: MaterialStateProperty.all(Colors.white),
+      
+                        // Create new user button
+                        SizedBox(
+                          width: 150.0,
+                          child: TextButton(
+                            onPressed: () {
+                              provider.indexUser = null;
+                              provider.users.removeAt(index!);
+                              Navigator.popAndPushNamed(context, '/read');
+                            },
+                            child: Text('Delete'),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
+                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

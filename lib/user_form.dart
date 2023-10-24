@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/container_all.dart';
 import 'package:flutter_application_1/field_form.dart';
 import 'package:flutter_application_1/provider.dart';
 import 'package:flutter_application_1/user.dart';
@@ -77,38 +78,49 @@ TextEditingController controllerPass = TextEditingController();
           )
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            FieldForm(
-              label: 'Name', 
-              isPassword: false, 
-              controller: controllerName
-            ),
-            FieldForm(
-              label: 'Email', 
-              isPassword: false, 
-              controller: controllerEmail
-            ),
-            FieldForm(
-              label: 'Password', 
-              isPassword: true, 
-              controller: controllerPass
-            ),
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: SizedBox(
-                width: 200.0,
-                child: TextButton(onPressed: saveUser,
-                 child: Text('Salvar'),
-                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
-                  foregroundColor: MaterialStateProperty.all(Colors.white)
-                  ),
-                 ),
+      body: ContainerAll(
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FieldForm(
+                  label: 'Name', 
+                  isPassword: false, 
+                  controller: controllerName
+                ),
               ),
-            ),
-          ], //Children
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FieldForm(
+                  label: 'Email', 
+                  isPassword: false, 
+                  controller: controllerEmail
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FieldForm(
+                  label: 'Password', 
+                  isPassword: true, 
+                  controller: controllerPass
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: SizedBox(
+                  width: 200.0,
+                  child: TextButton(onPressed: saveUser,
+                   child: Text('Salvar'),
+                   style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
+                    foregroundColor: MaterialStateProperty.all(Colors.white)
+                    ),
+                   ),
+                ),
+              ),
+            ], //Children
+          ),
         ),
       ),
     ); //faz a centralizacao do q ta dentro dele
