@@ -17,8 +17,16 @@ class UserList extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Users'),
+        title: Text('Users', 
+          style: TextStyle(
+            fontSize: 50,
+            fontFamily: 'Strange', 
+            color: Color.fromRGBO(167, 210, 201, 1),
+          ),
+        ),
+       
         centerTitle: true,
+        backgroundColor: Color.fromRGBO(221, 61, 49, 1),
         leading: BackButton(
           onPressed: (){
             provider.indexUser = null;

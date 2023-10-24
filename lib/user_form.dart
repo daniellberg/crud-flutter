@@ -71,6 +71,7 @@ TextEditingController controllerPass = TextEditingController();
       appBar: AppBar(
         title: Text(this.title),
         centerTitle: true,
+        backgroundColor: Color.fromRGBO(221, 61, 49, 1),
         actions: [
           Container(
             child: TextButton(

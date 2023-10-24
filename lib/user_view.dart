@@ -29,6 +29,7 @@ class UserView extends StatelessWidget {
       appBar: AppBar(
         title: Text(this.title),
         centerTitle: true,
+        backgroundColor: Color.fromRGBO(221, 61, 49, 1),
         actions: [
           Container(
             decoration: BoxDecoration(

@@ -23,6 +23,10 @@ fonts:
       - asset: assets/fonts/Montserrat-Bold.ttf
         weight: 700
 
+  - family: Strange
+    fonts:
+      - asset: assets/fonts/Strange.ttf
+
   # Definição de fontes Material Icons e Cupertino Icons
   - family: MaterialIcons
     fonts:
