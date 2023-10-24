@@ -53,6 +53,14 @@ class UserList extends StatelessWidget {
                     Navigator.popAndPushNamed(context, '/view');
                   },
                    icon: Icon(Icons.remove_red_eye_outlined)
+                  ), //dele user button
+                  IconButton(
+                  onPressed: (){
+                    provider.indexUser = null;
+                    provider.users.removeAt(indexBuilder);
+                    Navigator.popAndPushNamed(context, '/read');
+                  },
+                   icon: Icon(Icons.person_remove_outlined)
                   )
                 ],
               ),

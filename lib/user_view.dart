@@ -58,7 +58,7 @@ class UserView extends StatelessWidget {
               isPassword: true,
               controller: controllerPass,
               isForm: false,
-            ),
+            ), 
             SizedBox(height: 20), // Adicionei um espaço entre os campos e os botões
             Container(
               decoration: BoxDecoration(
@@ -92,9 +92,11 @@ class UserView extends StatelessWidget {
                         width: 150.0,
                         child: TextButton(
                           onPressed: () {
-                            Navigator.popAndPushNamed(context, '/create');
+                            provider.indexUser = null;
+                            provider.users.removeAt(index!);
+                            Navigator.popAndPushNamed(context, '/read');
                           },
-                          child: Text('Create new user'),
+                          child: Text('Delete'),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
                             foregroundColor: MaterialStateProperty.all(Colors.white),
@@ -102,19 +104,6 @@ class UserView extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                  SizedBox(
-                    width: 150.0,
-                    child: TextButton(
-                      onPressed: () {
-                        // Adicione a lógica para o novo botão aqui
-                      },
-                      child: Text('Novo Botão'),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
-                        foregroundColor: MaterialStateProperty.all(Colors.white),
-                      ),
-                    ),
                   ),
                 ],
               ),
